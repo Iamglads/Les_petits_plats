@@ -8,7 +8,7 @@ export class Card {
   }
 
   display() {
-    const { name, servings, ingredients, time, description } = this.recipe;
+    const { name, ingredients, time, description } = this.recipe;
     let ingredientsList = ingredients.map((item) => {
       return `<li>${item.ingredient}: <span>${item.ingredient.length} ${item.unit}</span></li>`;
     });

@@ -25,96 +25,43 @@
             <div>
                 <form class="container__form form-inline">
                     <div class="container__input">
-                        <input class="form-control mr-sm-11" type="search" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette" aria-label="Search">
+                        <input class="form-control mr-sm-11 search-bar" type="search" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette" aria-label="Search">
                         <span><img src="./images/search.png" alt="search"></span>
                     </div>
                     <!--BNUTTONS SELECT-->
                     <div class="container__select">
                         <div class="select__ingredients">
-                        <button class="btn btn-primary btn-ingredients"> Ingrédients <i class="fas fa-chevron-down"></i></button>
-                           <input type="text" placeholder="Ingrédients" class="input-ingredients">
+                            <div style="display: flex; justify-content: space-between; align-items: center;"> 
+                                <input type="text" placeholder="Ingrédients" class="input input-ingredients">
+                                <div><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="all-ingredients" role="listbox"> 
+                                <!--display ingredients-->
+                            </div>
                         </div>
                         <div class="select__appareils">
-                            <button class="btn btn-infos btn-appareils"> Appareils <i class="fas fa-chevron-down"></i></button>
-                           <input type="text" placeholder="Appareils" class="input-appareils">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <input type="text" placeholder="Appareils" class="input input-appareils">
+                                <div><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="all-appareils"  role="listbox"> 
+                                <!--display appareils-->
+                            </div>
                         </div>
                         <div class="select__ustenciles">
-                            <button class="btn btn-ustenciles"> Ustenciles <i class="fas fa-chevron-down"></i></button>
-                           <input type="text" placeholder="Ustenciles" class="input-ustenciles">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <input type="text" placeholder="Ustenciles" class=" input input-ustenciles">
+                                <div><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="all-ustenciles"  role="listbox"> 
+                                <!--display appareils-->
+                            </div>
                         </div>
                     </div>
                 </form>
                 <section class="section__results">
                     <div class="section__results--wrappe">
-                        <article  class="card">
-                            <div class="card-head">
-
-                            </div>
-                            <div class="card-content">
-                                <div class="card-content-title">
-                                    <h2>Limonade de Coco</h2>
-                                    <div>
-                                        <img src="./images/horloge.png" alt="image">
-                                        <span class="temps"> 10 min </span>
-                                    </div>
-                                </div>
-                                <div class="card-content-description">
-                                    <ul>
-                                        <li>Ingrédient 1: <span>200g</span></li>
-                                        <li>Ingrédient 1: <span>200g</span></li>
-                                        <li>Ingrédient 1: <span>200g</span></li>
-                                        <li>Ingrédient 1: <span>200g</span></li>
-                                        <li>Ingrédient 1: <span>200g</span></li>
-                                    </ul>
-                                    <div class="description">
-                                        <p>
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem omnis, vero aliquid consequatur, laborum minus ut corporis ipsa laboriosam aspernatur dicta recusandae optio temporibus iure nihil repellat, earum assumenda laudantium!
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article  class="card">
-                            <div class="card-head">
-
-                            </div>
-                            <div class="card-content">
-
-                            </div>
-                        </article>
-                        <article  class="card">
-                            <div class="card-head">
-
-                            </div>
-                            <div class="card-content">
-
-                            </div>
-                        </article>
-                        <article  class="card">
-                            <div class="card-head">
-
-                            </div>
-                            <div class="card-content">
-
-                            </div>
-                        </article>
-                        <article  class="card">
-                            <div class="card-head">
-
-                            </div>
-                            <div class="card-content">
-
-                            </div>
-                        </article>
-                        <article  class="card">
-                            <div class="card-head">
-
-                            </div>
-                            <div class="card-content">
-
-                            </div>
-                        </article>
-
+                        <!--Display recipes-->
                     </div>
                 </section>
             </div>
@@ -124,6 +71,7 @@
         </footer>
     </div>
 
-    <script src="node_modules/js/dist/*.js"></script>
+    <script type="module" src="App.js"></script>
+    <script  src="./js/select.js"></script>
 </body>
 </html>

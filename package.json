@@ -1,0 +1,25 @@
+{
+  "name": "p7_les_petits_plats",
+  "version": "1.0.0",
+  "description": "Algorithme de recherche",
+  "main": "recipes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iamglads/Les_petits_plats.git"
+  },
+  "keywords": [
+    "Javascript"
+  ],
+  "author": "Gladston Aristoverne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Iamglads/Les_petits_plats/issues"
+  },
+  "homepage": "https://github.com/Iamglads/Les_petits_plats#readme",
+  "dependencies": {
+    "bootstrap": "^5.1.3"
+  }
+}

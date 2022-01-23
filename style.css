@@ -34,6 +34,25 @@ p {
   color: rgb(0, 0, 0);
 }
 
+input:focus {
+  outline: none;
+}
+
+.search-bar:focus {
+  outline: none;
+  border: none;
+}
+
+.fas {
+  font-size: 20px;
+  color: white;
+}
+
+::placeholder {
+  color: #fff;
+  font-size: 20px;
+}
+
 header {
   padding: 2em;
   height: 200px;
@@ -80,35 +99,33 @@ main {
   justify-content: flex-start;
 }
 
-.container__select .btn {
-  padding: 1em;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.container__select .btn:focus {
-  outline: none;
-}
-
 .select__ingredients,
 .select__appareils,
 .select__ustenciles {
   margin-right: 30px;
+  padding: 1em 2em;
+  border-radius: 5px;
 }
 
-.btn-ingredients {
+.select__ingredients input,
+.select__appareils input,
+.select__ustenciles input {
+  background: none;
+  border: none;
+  padding: 1em 0;
+}
+
+.select__ingredients {
   background: #3282f7;
 }
-.btn-appareils {
+.select__appareils {
   background: #68d9a4;
 }
-.btn-ustenciles {
+.select__ustenciles {
   background: #ed6454;
 }
 
 .container__select input {
-  display: none;
 }
 
 /* SECTION CONTENT */
