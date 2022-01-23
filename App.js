@@ -111,3 +111,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const app = new App();
   app.init();
 });
+
+console.log("test");
