@@ -9,9 +9,11 @@ export class Card {
 
   display() {
     const { name, ingredients, time, description } = this.recipe;
-    let ingredientsList = ingredients.map((item) => {
-      return `<li>${item.ingredient}: <span>${item.ingredient.length} ${item.unit}</span></li>`;
-    });
+    let ingredientsList = ingredients
+      .map((item, index) => {
+        return `<li>${item.ingredient}: <span>${item.ingredient.length} ${item.unit}</span></li>`;
+      })
+      .join("");
 
     return ` 
         <article  class="card">
@@ -19,14 +21,14 @@ export class Card {
 
             </div>
             <div class="card-content">
-                <div class="card-content-title">
+                <div class="title">
                     <h2>${name}</h2>
                     <div>
                         <img src="./images/horloge.png" alt="image">
                         <span class="temps"> ${time} </span>
                     </div>
                 </div>
-                <div class="card-content-description">
+                <div class="content-description">
                     <ul>
                         ${ingredientsList}
                     </ul>

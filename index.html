@@ -23,39 +23,42 @@
         </header>
         <main class="container">
             <div>
-                <form class="container__form form-inline">
-                    <div class="container__input">
+                <form class="container__form">
+                    <div class="container__form--input">
                         <input class="form-control mr-sm-11 search-bar" type="search" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette" aria-label="Search">
                         <span><img src="./images/search.png" alt="search"></span>
                     </div>
+                    <div class="container__form--tags">
+                        <!--displays tags select here-->
+                    </div>
                     <!--BNUTTONS SELECT-->
-                    <div class="container__select">
-                        <div class="select__ingredients">
+                    <div class="container__form--select">
+                        <div class="ingredients">
                             <div style="display: flex; justify-content: space-between; align-items: center;"> 
                                 <input type="text" placeholder="Ingrédients" class="input input-ingredients">
                                 <div><i class="fas fa-chevron-down"></i></div>
                             </div>
-                            <div class="all-ingredients" role="listbox"> 
+                            <ul class="all-ingredients" role="listbox"> 
                                 <!--display ingredients-->
-                            </div>
+                            </ul>
                         </div>
-                        <div class="select__appareils">
+                        <div class="appliances">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <input type="text" placeholder="Appareils" class="input input-appareils">
                                 <div><i class="fas fa-chevron-down"></i></div>
                             </div>
-                            <div class="all-appareils"  role="listbox"> 
+                            <ul class="all-appareils"  role="listbox"> 
                                 <!--display appareils-->
-                            </div>
+                            </ul>
                         </div>
-                        <div class="select__ustenciles">
+                        <div class="ustencils">
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <input type="text" placeholder="Ustenciles" class=" input input-ustenciles">
                                 <div><i class="fas fa-chevron-down"></i></div>
                             </div>
-                            <div class="all-ustenciles"  role="listbox"> 
+                            <ul class="all-ustenciles"  role="listbox"> 
                                 <!--display appareils-->
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </form>
