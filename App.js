@@ -8,26 +8,54 @@ class App {
   }
 
   init() {
-    recipes.map((recipe) => {
-      const card = new Card(recipe);
-      this.displayRecipes.innerHTML += card.display();
-    });
+    this.display(this.recipes);
     this.searchBar(this.recipes);
-    this.filterIngredients(this.recipes);
-    this.filterAppliance(this.recipes);
-    this.filterUstencils(this.recipes);
+
+    // filtre all appliances
+    this.filterMethod(
+      this.recipes,
+      [],
+      document.querySelector(".all-appareils"),
+      "appliance"
+    );
+    // filtre all ustensils
+    this.filterMethod(
+      this.recipes,
+      [],
+      document.querySelector(".all-ustenciles"),
+      "ustensils"
+    );
+    // filtre all ingredients
+    this.filterMethod(
+      this.recipes,
+      [],
+      document.querySelector(".all-ingredients"),
+      "ingredients",
+      "ingredient"
+    );
   }
 
   /**
    *
-   * @param {Array} recipes tableau des recettes
+   * @param {Array} arr
+   * Display recipes in interface
+   */
+  display(arr) {
+    arr.map((item) => {
+      const card = new Card(item);
+      this.displayRecipes.innerHTML += card.display();
+    });
+  }
+
+  /**
+   *
+   * @param {Array} recipes
    */
   searchBar(recipes) {
     const searchBar = document.querySelector(".search-bar");
     searchBar.addEventListener("keyup", () => {
       const value = searchBar.value;
       if (value.length >= 3) {
-        //console.log(true);
         const filterRecipes = recipes.filter((recipe) => {
           const description = recipe.description.includes(value);
           const ingredients = recipe.ingredients.map((ingredient) =>
@@ -38,72 +66,50 @@ class App {
         });
         if (filterRecipes.length >= 1) {
           this.displayRecipes.innerHTML = "";
-          filterRecipes.map((recipe) => {
-            const card = new Card(recipe);
-            this.displayRecipes.innerHTML += card.display();
-          });
+          this.display(filterRecipes);
         } else this.dontMatch();
-
-        console.log(filterRecipes);
       } else {
-        recipes.map((recipe) => {
-          const card = new Card(recipe);
-          this.displayRecipes.innerHTML += card.display();
-        });
+        this.display(recipes);
       }
     });
   }
 
   dontMatch() {
     this.displayRecipes.innerHTML = "";
-    this.displayRecipes.innerHTML = `<h3> Aucune recette ne correspond à votre recherche!</h3>`;
+    this.displayRecipes.innerHTML = `<h3> Aucune recette ne correspond à votre critère...! <br> Vous pouvez chercher "Tarte aux pommes", "poisson", etc.</h3>`;
   }
 
-  filterIngredients(recipes) {
-    const displayIngredients = document.querySelector(".all-ingredients");
-    const listIngredients = [];
-    recipes.filter((recipe) => {
-      recipe.ingredients.map((ingredient) => {
-        listIngredients.push(ingredient.ingredient);
-      });
+  /**
+   *
+   * @param {Array} arr
+   */
+  displayTags(arr, returnHtml) {
+    arr.forEach((item) => {
+      returnHtml.innerHTML += `<li class="tag" data-tag="${item}"> ${item}</li>`;
     });
-    let filterDoublons = listIngredients.filter(
-      (item, index, self) => self.indexOf(item) == index
-    );
-    filterDoublons.forEach((item) => {
-      displayIngredients.innerHTML += `<li class="tag" data-tag="${item}"> ${item}</li>`;
-    });
-    //console.log(listIngredients);
   }
+  /**
+   *
+   * @param {Array} arr array of recipes
+   * @param {Array} emptyArr empty array
+   * @param {Sring} returnHtml
+   * @param {*} el
+   * @param {*} elTwo
+   */
+  filterMethod(arr, emptyArr, returnHtml, el, elTwo) {
+    arr.filter((items) => {
+      if (el == "ingredients") {
+        items[el].map((item) => emptyArr.push(item[elTwo]));
+      } else if (el == "appliance") {
+        emptyArr.push(items[el]);
+      } else if (el == "ustensils") {
+        items[el].forEach((item) => emptyArr.push(item));
+      }
+    });
 
-  filterAppliance(recipes) {
-    const listAppliance = [];
-    const displayAppliance = document.querySelector(".all-appareils");
-    recipes.filter((recipe) => {
-      listAppliance.push(recipe.appliance);
-    });
-    let filterDoublons = listAppliance.filter(
-      (item, index, self) => self.indexOf(item) == index
-    );
-    filterDoublons.forEach((item) => {
-      displayAppliance.innerHTML += `<li class="tag" data-tag="${item}"> ${item}</li>`;
-    });
-    console.log(listAppliance);
-  }
-
-  filterUstencils(recipes) {
-    const displayUstencils = document.querySelector(".all-ustenciles");
-    const listUstencils = [];
-    recipes.filter((recipe) => {
-      recipe.ustensils.forEach((ustensil) => listUstencils.push(ustensil));
-    });
-    let filterDoublons = listUstencils.filter(
-      (item, index, self) => self.indexOf(item) == index
-    );
-    filterDoublons.forEach((item) => {
-      displayUstencils.innerHTML += `<li class="tag" data-tag="${item}"> ${item}</li>`;
-    });
-    console.log(listUstencils);
+    let filterDoubles = new Set(emptyArr);
+    let objectToArray = Array.from(filterDoubles);
+    this.displayTags(objectToArray, returnHtml);
   }
 }
 
@@ -111,5 +117,3 @@ document.addEventListener("DOMContentLoaded", () => {
   const app = new App();
   app.init();
 });
-
-console.log("test");
